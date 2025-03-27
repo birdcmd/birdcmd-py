@@ -95,7 +95,8 @@ class CommandChannel(object):
                 print("Client: Connection is refused, please make sure your token/uuid is correct and your account is valid. Exiting.")
                 wsapp.close()
             elif msg.get("type") == "confirm_subscription":
-                print(f"Client: You're connected to tunnel: {json.loads(msg.get("identifier")).get("tunnel")}.")
+                tunnel_id = json.loads(msg.get("identifier")).get("tunnel")
+                print(f"Client: You're connected to tunnel: {tunnel_id}.")
             elif msg.get("type") == "disconnect":
                 if (msg.get("reason") == "server_restart" and msg.get("reconnect") == True):
                     print("Client: Reconnecting in a few seconds")
